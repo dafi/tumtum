@@ -1,0 +1,57 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
+apply from: '../bintrayconfig.gradle'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName rootProject.ext.publishPackage.version
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    api "androidx.preference:preference:${androidXPreferenceLibVersion}"
+
+    api "io.reactivex.rxjava2:rxjava:${rootProject.ext.rxjavaLibVersion}"
+
+    api "com.github.scribejava:scribejava-core:${rootProject.ext.scribejavaCoreLibVersion}"
+
+    api "com.squareup.picasso:picasso:${rootProject.ext.picassoLibVersion}"
+
+    api "com.squareup.okhttp3:okhttp:${rootProject.ext.okhttp3HttpLibVersion}"
+
+    api "com.ternaryop:utils:${rootProject.ext.ternaryUtilLibVersion}"
+
+    testImplementation "junit:junit:${junitLibVersion}"
+    androidTestImplementation "androidx.test:runner:${androidXTestRunner}"
+    androidTestImplementation "androidx.test.espresso:espresso-core:${androidXEspressoCoreLibVersion}"
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
+repositories {
+    mavenCentral()
+}
