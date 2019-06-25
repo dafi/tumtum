@@ -18,7 +18,7 @@ buildscript {
 
         scribejavaCoreLibVersion = '6.6.3'
 
-        ternaryUtilLibVersion = '1.4.2'
+        ternaryOpUtilLibVersion = '1.4.4'
 
         junitLibVersion = '4.13-beta-3'
 
@@ -29,12 +29,12 @@ buildscript {
     }
 
     ext.publishPackage = [
-            version: '1.0.0',
+            version: '1.0.1',
             groupId: 'com.ternaryop',
             artifactId: 'tumblr',
             bintrayRepoName: 'TumTum',
             desc: 'Tumblr Api Library focused on Android integration',
-            website: 'https://github.com/dafi/tumtum'
+            website: 'https://github.com/ternaryop/tumtum'
     ]
 
     repositories {
